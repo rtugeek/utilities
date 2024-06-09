@@ -1,0 +1,97 @@
+{
+  "name": "widgetjs.cn.utilities",
+  "version": "1.0.0",
+  "author": "Neo Fu",
+  "homepage": "",
+  "title": {
+    "zh-CN": "常用工具"
+  },
+  "description": {
+    "zh-CN": "内置工具组件包"
+  },
+  "entry": "index.html",
+  "remoteEntry": "https://widgetjs.cn/utilities",
+  "remotePackage": "https://widgetjs.cn/utilities/widget.json",
+  "remote": {
+    "entry": "https://widgetjs.cn/utilities",
+    "hash": true,
+    "base": "/utilities",
+    "hostname": "widgetjs.cn"
+  },
+  "hash": true,
+  "url": "",
+  "widgets": [
+    {
+      "name": "widgetjs.cn.utilities.water_reminder",
+      "title": {
+        "zh-CN": "喝水提醒"
+      },
+      "description": {
+        "zh-CN": "每天N杯水，养成好习惯"
+      },
+      "keywords": [
+        "recommend"
+      ],
+      "security": false,
+      "permissions": [],
+      "lang": "zh-CN",
+      "width": 2,
+      "height": 2,
+      "maxWidth": 2,
+      "webviewTag": false,
+      "maxHeight": 2,
+      "minWidth": 2,
+      "minHeight": 2,
+      "movable": true,
+      "singleton": false,
+      "resizable": true,
+      "path": "/widget/water_reminder",
+      "meta": {},
+      "backgroundThrottling": false,
+      "previewImage": "/images/preview_water_reminder.png",
+      "categories": [
+        "utilities"
+      ],
+      "supportDeployMode": 17,
+      "configPagePath": "/widget/config/water_reminder",
+      "routes": []
+    },
+    {
+      "name": "widgetjs.cn.utilities.key_stroke",
+      "title": {
+        "zh-CN": "键盘演示"
+      },
+      "description": {
+        "zh-CN": "在屏幕显示每一次快捷键敲击"
+      },
+      "keywords": [
+        "recommend"
+      ],
+      "security": false,
+      "permissions": [
+        "keyboard"
+      ],
+      "lang": "zh-CN",
+      "width": 1,
+      "height": 1,
+      "maxWidth": 1,
+      "webviewTag": false,
+      "maxHeight": 1,
+      "minWidth": 1,
+      "minHeight": 1,
+      "movable": true,
+      "singleton": false,
+      "resizable": true,
+      "path": "/widget/key_stroke",
+      "meta": {},
+      "backgroundThrottling": false,
+      "previewImage": "/images/preview_keystroke.png",
+      "categories": [
+        "utilities"
+      ],
+      "supportDeployMode": 65536,
+      "routes": []
+    }
+  ],
+  "pages": []
+}
