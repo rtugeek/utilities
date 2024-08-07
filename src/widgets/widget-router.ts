@@ -1,4 +1,5 @@
 import type { RouteRecordRaw } from 'vue-router'
+import ForexWidgetRoutes from './forex/ForexWidgetRoutes'
 import KeyStrokeWidgetRoutes from '@/widgets/key-stroke/KeyStrokeWidgetRoutes'
 import WaterReminderWidgetRoutes from '@/widgets/water-reminder/WaterReminderWidgetRoutes'
 
@@ -6,6 +7,7 @@ import WaterReminderWidgetRoutes from '@/widgets/water-reminder/WaterReminderWid
 const WidgetRouter: RouteRecordRaw[] = [
   ...KeyStrokeWidgetRoutes,
   ...WaterReminderWidgetRoutes,
+  ...ForexWidgetRoutes,
   // FBI WANING! ROUTE PLACE, DONT DELETE THIS LINE
 ]
 export default WidgetRouter

@@ -91,6 +91,39 @@
       ],
       "supportDeployMode": 65536,
       "routes": []
+    },
+    {
+      "name": "widgetjs.cn.utilities.forex",
+      "title": {
+        "zh-CN": "汇率换算"
+      },
+      "description": {
+        "zh-CN": "每分钟刷新一次"
+      },
+      "keywords": [
+        "recommend"
+      ],
+      "security": false,
+      "permissions": [],
+      "lang": "zh-CN",
+      "width": 3,
+      "height": 3,
+      "maxWidth": 3,
+      "webviewTag": false,
+      "maxHeight": 3,
+      "minWidth": 3,
+      "minHeight": 3,
+      "movable": true,
+      "singleton": false,
+      "resizable": true,
+      "path": "/widget/forex",
+      "meta": {},
+      "backgroundThrottling": true,
+      "previewImage": "修改为组件预览图地址",
+      "categories": [],
+      "supportDeployMode": 17,
+      "configPagePath": "/widget/forex/config?transparent=false&frame=true&width=500&height=500",
+      "routes": []
     }
   ],
   "pages": []
