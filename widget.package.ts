@@ -11,7 +11,6 @@ export default new WidgetPackage({
   title: {
     'zh-CN': '常用工具',
   },
-  version: '1.0.0',
   devOptions: {
     folder: './src/widgets/',
   },

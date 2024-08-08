@@ -5,13 +5,12 @@ const ForexWidget = new Widget({
   title: { 'zh-CN': '汇率换算' },
   description: { 'zh-CN': '每分钟刷新一次' },
   keywords: [WidgetKeyword.RECOMMEND],
-  categories: [],
+  categories: ['utilities'],
   lang: 'zh-CN',
   width: 3,
   height: 3,
-  previewImage: '修改为组件预览图地址',
-  path: '/widget/forex',
-  configPagePath: '/widget/forex/config?transparent=false&frame=true&width=500&height=500',
+  previewImage: '/images/preview_forex.png',
+  path: '/widget/forex'
 })
 
 export default ForexWidget

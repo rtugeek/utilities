@@ -1,6 +1,6 @@
 {
   "name": "widgetjs.cn.utilities",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "author": "Neo Fu",
   "homepage": "",
   "title": {
@@ -119,10 +119,11 @@
       "path": "/widget/forex",
       "meta": {},
       "backgroundThrottling": true,
-      "previewImage": "修改为组件预览图地址",
-      "categories": [],
+      "previewImage": "/images/preview_forex.png",
+      "categories": [
+        "utilities"
+      ],
       "supportDeployMode": 17,
-      "configPagePath": "/widget/forex/config?transparent=false&frame=true&width=500&height=500",
       "routes": []
     }
   ],
