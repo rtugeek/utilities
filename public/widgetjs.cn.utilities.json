@@ -53,7 +53,7 @@
         "utilities"
       ],
       "supportDeployMode": 17,
-      "configPagePath": "/widget/config/water_reminder",
+      "configPagePath": "/widget/config/water_reminder?transparent=false&frame=true&width=600&height=500",
       "routes": []
     },
     {

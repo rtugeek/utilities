@@ -6,78 +6,73 @@ import {
   useWidgetSize,
 } from '@widget-js/vue3'
 import {
+  computed,
+  nextTick,
   onMounted,
   ref,
   watch,
 } from 'vue'
-import type { BroadcastEvent, ReminderNotificationOption } from '@widget-js/core'
+import { type BroadcastEvent, type ReminderNotificationOption, WidgetTheme } from '@widget-js/core'
 import {
   LogApi,
   NotificationApi,
-  WidgetDataApi,
 } from '@widget-js/core'
 import dayjs from 'dayjs'
-import { useIntervalFn } from '@vueuse/core'
+import { useIntervalFn, useStorage } from '@vueuse/core'
+import consola from 'consola'
 import WaterReminderComponent from './WaterReminderComponent.vue'
-import { WaterReminderModel } from '@/widgets/water-reminder/model/WaterReminderModel'
+import {
+  DEFAULT_WATER_REMINDER_CONFIG,
+  type IWaterReminderConfig,
+} from '@/widgets/water-reminder/model/WaterReminderConfig'
 import WaterReminderWidget from '@/widgets/water-reminder/WaterReminder.widget'
+import { WaterReminderHistory } from '@/widgets/water-reminder/model/WaterReminderHistory'
 
-let lastReminderAt = dayjs()
 const cup = ref(0)
-const defaultData = new WaterReminderModel()
-defaultData.theme.backgroundColor = '#fff'
-defaultData.theme.color = '#092239'
-defaultData.theme.primaryColor = '#2596FF'
-const { widgetData } = useWidget(WaterReminderModel, {
-  defaultData,
-  onDataLoaded: (data) => {
-    cup.value = data?.getTodayHistory() ?? 0
-    if (data?.lastReminderAt) {
-      lastReminderAt = dayjs(data?.lastReminderAt)
-    }
-
-    if (data?.enableReminder) {
-      // eslint-disable-next-line ts/no-use-before-define
-      resume()
-    }
-    else {
-      // eslint-disable-next-line ts/no-use-before-define
-      pause()
-    }
+const configData = useStorage<IWaterReminderConfig>('water-reminder-config', DEFAULT_WATER_REMINDER_CONFIG)
+const lastReminderAt = computed({
+  get: () => {
+    return dayjs(configData.value.lastReminderAt)
   },
-  loadDataByWidgetName: true,
+  set: (value) => {
+    configData.value.lastReminderAt = value.toISOString()
+  },
+})
+const defaultTheme = new WidgetTheme({
+  useGlobalTheme: false,
+  backgroundColor: '#fff',
+  color: '#092239',
+  primaryColor: '#2596FF',
+})
+const { widgetTheme } = useWidget({
+  defaultTheme,
 })
 
 watch(cup, (newValue) => {
   LogApi.log('cup changed!')
-  widgetData.value.history[widgetData.value.getTodayKey()] = newValue
-  WidgetDataApi.saveByName(widgetData.value, { sendBroadcast: false })
-  lastReminderAt = dayjs()
+  WaterReminderHistory.setTodayCount(newValue)
 })
 
 const name = WaterReminderWidget.name
 const cancelBroadcast = `${name}.cancel`
 const okBroadcast = `${name}.ok`
-const {
-  pause,
-  resume,
-} = useIntervalFn(() => {
+useIntervalFn(() => {
   const now = dayjs()
-  const second = now.diff(lastReminderAt, 'second')
-  widgetData.value.lastReminderAt = lastReminderAt.toISOString()
-  WidgetDataApi.saveByName(widgetData.value, { sendBroadcast: false })
+  const second = now.diff(lastReminderAt.value, 'second')
+  configData.value.lastReminderAt = lastReminderAt.value.toISOString()
 
-  if (second >= widgetData.value.interval * 60) {
-    lastReminderAt = dayjs()
-    const options:ReminderNotificationOption = {
-      title:'喝水提醒',
+  if (second >= configData.value.interval * 60) {
+    consola.info('send reminder')
+    lastReminderAt.value = dayjs()
+    const options: ReminderNotificationOption = {
+      title: '喝水提醒',
       message: '起来喝杯水吧！',
       icon: 'tea-drink',
-      cancelButtonText:'关闭',
-      confirmButtonText:'喝一杯',
+      cancelButtonText: '关闭',
+      confirmButtonText: '喝一杯',
       cancelBroadcast,
-      confirmBroadcast:okBroadcast,
-      duration:5000,
+      confirmBroadcast: okBroadcast,
+      duration: 5000,
     }
     NotificationApi.reminder(options)
   }
@@ -90,16 +85,17 @@ useAppBroadcast([cancelBroadcast, okBroadcast], (broadcastEvent: BroadcastEvent)
 })
 
 const { windowWidth } = useWidgetSize()
-onMounted(() => {
+onMounted(async () => {
   const size = (windowWidth.value * 16) / 155
   document.documentElement.style.fontSize = `${size}px`
-  return size
+  await nextTick()
+  cup.value = await WaterReminderHistory.getTodayCount()
 })
 </script>
 
 <template>
   <WidgetWrapper>
-    <WaterReminderComponent v-bind="widgetData.theme" v-model:cup="cup" />
+    <WaterReminderComponent v-bind="widgetTheme" v-model:cup="cup" :target-cup="configData.targetCup" />
   </WidgetWrapper>
 </template>
 

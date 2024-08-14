@@ -4,31 +4,25 @@ import {
   WidgetEditDialog,
   useWidget,
 } from '@widget-js/vue3'
-import { BrowserWindowApi } from '@widget-js/core'
-import { ref } from 'vue'
-import { WaterReminderModel } from '@/widgets/water-reminder/model/WaterReminderModel'
+import { WidgetTheme } from '@widget-js/core'
+import { useStorage } from '@vueuse/core'
+import {
+  DEFAULT_WATER_REMINDER_CONFIG,
+  type IWaterReminderConfig,
+} from '@/widgets/water-reminder/model/WaterReminderConfig'
 
-BrowserWindowApi.setup({
-  width: 600,
-  height: 400,
-  center: true,
+const configData = useStorage<IWaterReminderConfig>('water-reminder-config', DEFAULT_WATER_REMINDER_CONFIG)
+const defaultTheme = new WidgetTheme({
+  useGlobalTheme: false,
+  backgroundColor: '#fff',
+  color: '#092239',
+  primaryColor: '#2596FF',
 })
-
-const cup = ref(0)
-const defaultData = new WaterReminderModel()
-defaultData.theme.backgroundColor = '#fff'
-defaultData.theme.color = '#092239'
-defaultData.theme.primaryColor = '#2596FF'
 const {
-  widgetData,
   widgetParams,
   save,
-} = useWidget(WaterReminderModel, {
-  defaultData,
-  loadDataByWidgetName: true,
-  onDataLoaded: (data) => {
-    cup.value = data?.getTodayHistory() ?? 0
-  },
+} = useWidget({
+  defaultTheme,
 })
 
 const widgetConfigOption = new WidgetConfigOption({
@@ -44,7 +38,6 @@ const widgetConfigOption = new WidgetConfigOption({
 
 <template>
   <WidgetEditDialog
-    v-model="widgetData"
     :widget-params="widgetParams"
     :option="widgetConfigOption"
     label-width="150px"
@@ -54,21 +47,21 @@ const widgetConfigOption = new WidgetConfigOption({
     <template #custom>
       <el-form>
         <el-form-item label="定时提醒">
-          <el-checkbox v-model="widgetData.enableReminder" />
+          <el-checkbox v-model="configData.enableReminder" />
         </el-form-item>
         <el-tooltip
-          v-if="widgetData.enableReminder"
+          v-if="configData.enableReminder"
           class="box-item"
           effect="dark"
           content="单位为分钟"
           placement="top-start"
         >
           <el-form-item label="提醒间隔">
-            <el-input-number v-model="widgetData.interval" :min="5" :max="100" />
+            <el-input-number v-model="configData.interval" :min="5" :max="100" />
           </el-form-item>
         </el-tooltip>
         <el-form-item label="目标杯数">
-          <el-input-number v-model="widgetData.targetCup" :min="1" :max="20" />
+          <el-input-number v-model="configData.targetCup" :min="1" :max="20" />
         </el-form-item>
       </el-form>
     </template>

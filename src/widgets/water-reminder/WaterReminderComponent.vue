@@ -137,7 +137,6 @@ const circleBorderColor = computed(() => {
 <style scoped lang="scss">
 .water-reminder {
   border-radius: 22px;
-  background-color: var(--widget-background-color);
 
   .circle {
     height: 70%;

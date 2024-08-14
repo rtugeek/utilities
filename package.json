@@ -15,7 +15,7 @@
     "@icon-park/vue-next": "^1.4.2",
     "@types/color": "^3.0.3",
     "@types/lodash-es": "^4.17.12",
-    "@vueuse/core": "^10.10.0",
+    "@vueuse/core": "^10.11.1",
     "@vueuse/motion": "^2.2.3",
     "@widget-js/core": "^24.1.1-beta.32",
     "@widget-js/vue3": "^24.1.1-beta.32",
@@ -24,6 +24,7 @@
     "consola": "^3.2.3",
     "dayjs": "^1.11.11",
     "element-plus": "^2.7.5",
+    "localforage": "^1.10.0",
     "lodash-es": "^4.17.21",
     "vue": "^3.3.11",
     "vue-router": "^4.2.5"
