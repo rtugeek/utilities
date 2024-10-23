@@ -4,10 +4,12 @@
   "author": "Neo Fu",
   "homepage": "",
   "title": {
-    "zh-CN": "常用工具"
+    "zh-CN": "常用工具",
+    "en-US": "Utilities"
   },
   "description": {
-    "zh-CN": "内置工具组件包"
+    "zh-CN": "内置工具组件包",
+    "en-US": "Built-in utility widgets"
   },
   "entry": "index.html",
   "remoteEntry": "https://widgetjs.cn/utilities",
@@ -24,10 +26,12 @@
     {
       "name": "widgetjs.cn.utilities.water_reminder",
       "title": {
-        "zh-CN": "喝水提醒"
+        "zh-CN": "喝水提醒",
+        "en-US": "Water Reminder"
       },
       "description": {
-        "zh-CN": "每天N杯水，养成好习惯"
+        "zh-CN": "每天N杯水，养成好习惯",
+        "en-US": "Build healthy habits with daily cups of water"
       },
       "keywords": [
         "recommend"
@@ -59,10 +63,12 @@
     {
       "name": "widgetjs.cn.utilities.key_stroke",
       "title": {
-        "zh-CN": "键盘演示"
+        "zh-CN": "键盘演示",
+        "en-US": "Key Stroke"
       },
       "description": {
-        "zh-CN": "在屏幕显示每一次快捷键敲击"
+        "zh-CN": "在屏幕显示每一次快捷键敲击",
+        "en-US": "Display every keystroke on the screen"
       },
       "keywords": [
         "recommend"
@@ -95,10 +101,12 @@
     {
       "name": "widgetjs.cn.utilities.forex",
       "title": {
-        "zh-CN": "汇率换算"
+        "zh-CN": "汇率换算",
+        "en-US": "Forex"
       },
       "description": {
-        "zh-CN": "每分钟刷新一次"
+        "zh-CN": "每分钟刷新一次",
+        "en-US": "Refresh every minute"
       },
       "keywords": [
         "recommend"

@@ -12,7 +12,13 @@ import {
   ref,
   watch,
 } from 'vue'
-import { type BroadcastEvent, type ReminderNotificationOption, WidgetTheme } from '@widget-js/core'
+import {
+  AppApiEvent,
+  type BroadcastEvent,
+  type ReminderNotificationOption,
+  SystemApi, SystemApiEvent,
+  WidgetTheme
+} from '@widget-js/core'
 import {
   LogApi,
   NotificationApi,
@@ -61,7 +67,7 @@ useIntervalFn(() => {
   const second = now.diff(lastReminderAt.value, 'second')
   configData.value.lastReminderAt = lastReminderAt.value.toISOString()
 
-  if (second >= configData.value.interval * 60) {
+  if (second >= configData.value.interval * 60 && cup.value < configData.value.targetCup) {
     consola.info('send reminder')
     lastReminderAt.value = dayjs()
     const options: ReminderNotificationOption = {
@@ -78,9 +84,11 @@ useIntervalFn(() => {
   }
 }, 10000)
 
-useAppBroadcast([cancelBroadcast, okBroadcast], (broadcastEvent: BroadcastEvent) => {
+useAppBroadcast([cancelBroadcast, okBroadcast,SystemApiEvent.DATE_CHANGED], async (broadcastEvent: BroadcastEvent) => {
   if (broadcastEvent.event == okBroadcast) {
     cup.value++
+  }else if(broadcastEvent.event == SystemApiEvent.DATE_CHANGED){
+    cup.value = await WaterReminderHistory.getTodayCount()
   }
 })
 

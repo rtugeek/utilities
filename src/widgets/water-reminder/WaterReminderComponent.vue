@@ -113,7 +113,7 @@ function reset() {
 
 const circleBorderColor = computed(() => {
   const color = new Color(props.primaryColor)
-  return color.alpha(0.5).toString()
+  return color.mix(new Color("#fff")).alpha(0.8).toString()
 })
 </script>
 
@@ -136,16 +136,19 @@ const circleBorderColor = computed(() => {
 
 <style scoped lang="scss">
 .water-reminder {
-  border-radius: 22px;
-
+  display: flex;
+  width: var(--widget-inner-width);
+  justify-items: center;
+  align-items: center;
+  justify-content: center;
   .circle {
-    height: 70%;
-    width: 70%;
+    height: 65vw;
+    width: 65vw;
     position: relative;
-    left: 15%;
-    top: 10%;
+    margin-top: 8px;
 
     .border {
+      box-sizing: border-box;
       border-radius: 50%;
       width: 100%;
       aspect-ratio: 1;
@@ -159,6 +162,7 @@ const circleBorderColor = computed(() => {
     #canvas {
       position: relative;
       width: 100%;
+      height: 100%;
       aspect-ratio: 1;
       top: 50%;
       left: 50%;

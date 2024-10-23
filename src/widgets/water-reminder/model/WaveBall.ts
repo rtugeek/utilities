@@ -13,7 +13,7 @@ export class WaveBall {
   ctx: CanvasRenderingContext2D | undefined
 
   constructor(options: WaveBallOption) {
-    this.size = options.size ?? 200
+    this.size = Math.ceil(options.size) ?? 200
     this.x = options.x ?? this.size / 2
     this.y = options.y ?? this.size / 2
     this.progress = options.progress ?? 0
@@ -30,20 +30,8 @@ export class WaveBall {
     this.bgColor = ctx.createLinearGradient(size / 2, size / 2, size / 2, size)
     this.bgColor!.addColorStop(0, color)
     this.bgColor!.addColorStop(1, color)
-    this.drawBall()
     this.drawWave()
     return this
-  }
-
-  drawBall() {
-    // const {size, ctx, x, y, color} = this;
-    // ctx!.save();
-    // ctx!.lineWidth = 4;
-    // ctx!.strokeStyle = color;
-    // ctx!.beginPath();
-    // ctx!.arc(x, y, size / 2, 0, 2 * Math.PI);
-    // ctx!.stroke();
-    // ctx!.restore();
   }
 
   drawWave(n = 0) {
@@ -85,7 +73,6 @@ export class WaveBall {
 
     this.drawWave(0)
     this.drawWave(1)
-    this.drawBall()
   }
 }
 
