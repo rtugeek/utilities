@@ -2,8 +2,8 @@ import { BackgroundWidget, WidgetKeyword } from '@widget-js/core'
 
 const KeyStrokeWidget = new BackgroundWidget({
   name: 'widgetjs.cn.utilities.key_stroke',
-  title: { 'zh-CN': '键盘演示' },
-  description: { 'zh-CN': '在屏幕显示每一次快捷键敲击' },
+  title: { 'zh-CN': '键盘演示', 'en-US': 'Key Stroke' },
+  description: { 'zh-CN': '在屏幕显示每一次快捷键敲击', 'en-US': 'Display every keystroke on the screen' },
   keywords: [WidgetKeyword.RECOMMEND],
   lang: 'zh-CN',
   categories: ['utilities'],

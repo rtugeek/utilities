@@ -68,7 +68,7 @@ const value = defineModel<number>('value', {
     input {
       border: none;
       background-color: transparent;
-      color: white;
+      color: var(--widget-color);
       padding: 0;
       width: 60vw;
       &:focus{

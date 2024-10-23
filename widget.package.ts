@@ -4,12 +4,14 @@ export default new WidgetPackage({
   author: 'Neo Fu',
   description: {
     'zh-CN': '内置工具组件包',
+    'en-US': 'Built-in utility widgets',
   },
   hash: true,
   homepage: '',
   name: 'widgetjs.cn.utilities',
   title: {
     'zh-CN': '常用工具',
+    'en-US': 'Utilities',
   },
   devOptions: {
     folder: './src/widgets/',

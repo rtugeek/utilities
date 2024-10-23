@@ -6,8 +6,8 @@ import {
 // 组件关键词
 const WaterReminderWidget = new Widget({
   name: 'widgetjs.cn.utilities.water_reminder',
-  title: { 'zh-CN': '喝水提醒' },
-  description: { 'zh-CN': '每天N杯水，养成好习惯' },
+  title: { 'zh-CN': '喝水提醒', 'en-US': 'Water Reminder' },
+  description: { 'zh-CN': '每天N杯水，养成好习惯', 'en-US': 'Build healthy habits with daily cups of water' },
   keywords: [WidgetKeyword.RECOMMEND],
   lang: 'zh-CN',
   previewImage: '/images/preview_water_reminder.png',
