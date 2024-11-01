@@ -16,7 +16,7 @@ const value = defineModel<number>('value', {
 <template>
   <div class="currency">
     <div class="title" @click="emits('titleClick')">
-      <img :src="currency.flag">{{ currency.sortName?? currency.name }}/{{ currency.code }}
+      <img :src="currency.flag" :alt="currency.code">{{ currency.sortName?? currency.name }}/{{ currency.code }}
       <Down class="ml-auto" />
     </div>
     <div class="value">

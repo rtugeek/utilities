@@ -1,6 +1,6 @@
-const antfu = require('@antfu/eslint-config').default
+import antfu from '@antfu/eslint-config'
 
-module.exports = antfu({
+export default antfu({
   typescript: true,
   vue: false,
   ignores: ['**/*.md', '**/*.spec.ts', '**/*.md/*.*', 'dist/', 'public/', '**/dist/**/', 'node_modules', '**/node_modules/**', 'node_modules/', '**/node_modules/**/', 'patches/', '**/patches/**/', 'types/', '**/types/**/', 'cache/', '**/cache/**/', '!packages/.vitepress', '!packages/.vitepress/**', '!.eslintrc.js', '!.eslintrc.js/**', '!rollup.config.js', '!rollup.config.js/**', '!.test', '!**/.test/**', '.temp', '**/.temp/**'],

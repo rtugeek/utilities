@@ -24,43 +24,6 @@
   "url": "",
   "widgets": [
     {
-      "name": "widgetjs.cn.utilities.water_reminder",
-      "title": {
-        "zh-CN": "喝水提醒",
-        "en-US": "Water Reminder"
-      },
-      "description": {
-        "zh-CN": "每天N杯水，养成好习惯",
-        "en-US": "Build healthy habits with daily cups of water"
-      },
-      "keywords": [
-        "recommend"
-      ],
-      "security": false,
-      "permissions": [],
-      "lang": "zh-CN",
-      "width": 2,
-      "height": 2,
-      "maxWidth": 2,
-      "webviewTag": false,
-      "maxHeight": 2,
-      "minWidth": 2,
-      "minHeight": 2,
-      "movable": true,
-      "singleton": false,
-      "resizable": true,
-      "path": "/widget/water_reminder",
-      "meta": {},
-      "backgroundThrottling": false,
-      "previewImage": "/images/preview_water_reminder.png",
-      "categories": [
-        "utilities"
-      ],
-      "supportDeployMode": 17,
-      "configPagePath": "/widget/config/water_reminder?transparent=false&frame=true&width=600&height=500",
-      "routes": []
-    },
-    {
       "name": "widgetjs.cn.utilities.key_stroke",
       "title": {
         "zh-CN": "键盘演示",
@@ -96,6 +59,43 @@
         "utilities"
       ],
       "supportDeployMode": 65536,
+      "routes": []
+    },
+    {
+      "name": "widgetjs.cn.utilities.water_reminder",
+      "title": {
+        "zh-CN": "喝水提醒",
+        "en-US": "Water Reminder"
+      },
+      "description": {
+        "zh-CN": "每天N杯水，养成好习惯",
+        "en-US": "Build healthy habits with daily cups of water"
+      },
+      "keywords": [
+        "recommend"
+      ],
+      "security": false,
+      "permissions": [],
+      "lang": "zh-CN",
+      "width": 2,
+      "height": 2,
+      "maxWidth": 2,
+      "webviewTag": false,
+      "maxHeight": 2,
+      "minWidth": 2,
+      "minHeight": 2,
+      "movable": true,
+      "singleton": false,
+      "resizable": true,
+      "path": "/widget/water_reminder",
+      "meta": {},
+      "backgroundThrottling": false,
+      "previewImage": "/images/preview_water_reminder.png",
+      "categories": [
+        "utilities"
+      ],
+      "supportDeployMode": 17,
+      "configPagePath": "/widget/config/water_reminder?transparent=false&frame=true&width=600&height=500",
       "routes": []
     },
     {

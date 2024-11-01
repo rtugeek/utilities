@@ -1,4 +1,4 @@
-export type CurrencyCode = 'CNY' | 'USD' | 'JPY' | 'EUR' | 'KRW' | 'AUD' | 'HKD' |'PHP' | 'MYR' | 'SGD' | 'THB'
+export type CurrencyCode = 'CNY' | 'USD' | 'JPY' | 'EUR' | 'KRW' | 'AUD' | 'HKD' | 'PHP' | 'MYR' | 'SGD' | 'THB'
 
 export interface CurrencyInfo {
   code: CurrencyCode
