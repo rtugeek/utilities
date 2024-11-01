@@ -1,8 +1,9 @@
-export type CurrencyCode = 'CNY' | 'USD' | 'JPY' | 'EUR' | 'KRW' | 'AUD' | 'HKD'
+export type CurrencyCode = 'CNY' | 'USD' | 'JPY' | 'EUR' | 'KRW' | 'AUD' | 'HKD' |'PHP' | 'MYR' | 'SGD' | 'THB'
 
 export interface CurrencyInfo {
   code: CurrencyCode
   name: string
+  sortName?: string
   symbol: string
   flag: string
 }
@@ -50,7 +51,33 @@ export const CurrencyMapping: CurrencyInfo[] = [
     code: 'AUD',
     name: '澳元',
     flag: 'https://assets.msn.cn/weathermapdata/1/static/finance/taskbar/countryflag/au.svg',
-    symbol: '$',
+    symbol: 'A$',
+  },
+  {
+    code: 'PHP',
+    name: '菲律宾比索',
+    flag: 'https://assets.msn.cn/weathermapdata/1/static/finance/taskbar/countryflag/php.svg',
+    symbol: '₱',
+    sortName: '比索',
+  },
+  {
+    code: 'SGD',
+    name: '新加坡元',
+    flag: 'https://assets.msn.cn/weathermapdata/1/static/finance/taskbar/countryflag/sgd.svg',
+    symbol: 'S$',
+  },
+  {
+    code: 'MYR',
+    name: '马来西亚林吉特',
+    flag: 'https://assets.msn.cn/weathermapdata/1/static/finance/taskbar/countryflag/myr.svg',
+    symbol: 'RM',
+    sortName: '林吉特',
+  },
+  {
+    code: 'THB',
+    name: '泰铢',
+    flag: 'https://assets.msn.cn/weathermapdata/1/static/finance/taskbar/countryflag/thb.svg',
+    symbol: '฿',
   },
 ]
 

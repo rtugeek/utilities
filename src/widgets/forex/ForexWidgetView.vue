@@ -85,7 +85,7 @@ useIntervalFn(refresh, 1000 * 60)
   <widget-wrapper>
     <div class="root flex flex-col gap-2 p-4">
       <div class="font-bold flex">
-        {{ currency1.name }}兑{{ currency2.name }}
+        {{ currency1.sortName?? currency1.name }}兑{{ currency2.sortName?? currency2.name }}
         <Refresh class="ml-auto cursor-pointer" :class="{ rotating: loading }" @click="refresh" />
       </div>
       <div class="flex text-xs gap-2">
