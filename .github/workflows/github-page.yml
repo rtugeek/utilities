@@ -24,7 +24,7 @@ jobs:
           node-version: 18.x
       - name: Run npm install
         id: install
-        run: npm install
+        run: npm install --verbose
       - name: Build static files
         id: build
         run: npm run build
