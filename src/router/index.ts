@@ -5,6 +5,11 @@ const router = createRouter({
   history: createWebHashHistory('/utilities'),
   routes: [
     ...WidgetRouter,
+    {
+      path: '/',
+      name: `${name}.config`,
+      component: () => import(/* webpackChunkName: "com.wisdom.widgets.water_reminder.config" */ '../widgets/LandingPage.vue'),
+    },
   ],
 })
 

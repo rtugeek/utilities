@@ -21,7 +21,7 @@
     "@vueuse/core": "^10.11.1",
     "@vueuse/motion": "^2.2.3",
     "@widget-js/core": "^24.1.1-beta.42",
-    "@widget-js/vue3": "^24.1.1-beta.41",
+    "@widget-js/vue3": "^24.1.1-beta.47",
     "axios": "^1.7.3",
     "color": "^4.2.3",
     "consola": "^3.2.3",
