@@ -22,11 +22,12 @@ jobs:
         uses: actions/setup-node@v4
         with:
           node-version: 18.x
+      - name: Run npm install
+        id: install
+        run: npm install
       - name: Build static files
         id: build
-        run: |
-          npm install
-          npm run build
+        run: npm run build
       - name: Upload static files as artifact
         id: deployment
         uses: actions/upload-pages-artifact@v3
