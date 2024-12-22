@@ -20,6 +20,9 @@ const WaterReminderWidget = new Widget({
   minHeight: 2,
   maxHeight: 2,
   path: '/widget/water_reminder',
+  socialLinks: [
+    { name: 'github', link: 'https://github.com/rtugeek/utilities' },
+  ],
   configPagePath: '/widget/config/water_reminder?transparent=false&frame=true&width=600&height=500',
 })
 

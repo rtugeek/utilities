@@ -10,6 +10,9 @@ const KeyStrokeWidget = new BackgroundWidget({
   previewImage: '/images/preview_keystroke.png',
   permissions: ['keyboard'],
   path: '/widget/key_stroke',
+  socialLinks: [
+    { name: 'github', link: 'https://github.com/rtugeek/utilities' },
+  ],
 })
 
 export default KeyStrokeWidget

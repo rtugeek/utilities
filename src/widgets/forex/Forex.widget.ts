@@ -11,6 +11,9 @@ const ForexWidget = new Widget({
   height: 3,
   previewImage: '/images/preview_forex.png',
   path: '/widget/forex',
+  socialLinks: [
+    { name: 'github', link: 'https://github.com/rtugeek/utilities' },
+  ],
 })
 
 export default ForexWidget

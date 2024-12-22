@@ -58,7 +58,13 @@
       ],
       "supportDeployMode": 17,
       "configPagePath": "/widget/config/water_reminder?transparent=false&frame=true&width=600&height=500",
-      "routes": []
+      "routes": [],
+      "socialLinks": [
+        {
+          "name": "github",
+          "link": "https://github.com/rtugeek/utilities"
+        }
+      ]
     },
     {
       "name": "widgetjs.cn.utilities.key_stroke",
@@ -96,7 +102,13 @@
         "utilities"
       ],
       "supportDeployMode": 65536,
-      "routes": []
+      "routes": [],
+      "socialLinks": [
+        {
+          "name": "github",
+          "link": "https://github.com/rtugeek/utilities"
+        }
+      ]
     },
     {
       "name": "widgetjs.cn.utilities.forex",
@@ -132,7 +144,13 @@
         "utilities"
       ],
       "supportDeployMode": 17,
-      "routes": []
+      "routes": [],
+      "socialLinks": [
+        {
+          "name": "github",
+          "link": "https://github.com/rtugeek/utilities"
+        }
+      ]
     }
   ],
   "pages": []
