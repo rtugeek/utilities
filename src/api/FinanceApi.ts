@@ -1,4 +1,6 @@
-export type CurrencyCode = 'CNY' | 'USD' | 'JPY' | 'EUR' | 'KRW' | 'AUD' | 'HKD' | 'PHP' | 'MYR' | 'SGD' | 'THB' | 'VND' | 'IDR'
+import type { BaiDuApiResponse } from '@/api/BaiDuStockApi'
+
+export type CurrencyCode = 'CNY' | 'USD' | 'JPY' | 'EUR' | 'KRW' | 'AUD' | 'HKD' | 'PHP' | 'MYR' | 'SGD' | 'THB' | 'VND' | 'IDR' | 'RUB'
 
 export interface CurrencyInfo {
   code: CurrencyCode
@@ -95,6 +97,12 @@ export const PopularCurrencyMapping: CurrencyInfo[] = [
     flag: 'https://assets.msn.cn/weathermapdata/1/static/finance/taskbar/countryflag/au.svg',
     symbol: 'A$',
   },
+  {
+    name: '卢布',
+    code: 'RUB',
+    symbol: '₽',
+    flag: 'https://assets.msn.cn/weathermapdata/1/static/finance/taskbar/countryflag/ru.svg',
+  },
 ]
 
 export const CurrencyMapping: CurrencyInfo[] = [
@@ -103,22 +111,42 @@ export const CurrencyMapping: CurrencyInfo[] = [
 ]
 
 export class FinanceApi {
-  static async getForexRates(from: CurrencyCode, to: CurrencyCode): Promise<FinanceResult<GetRevForeignDataResult>> {
+  static async getForexRates(from: CurrencyCode, to: CurrencyCode): Promise<BaiDuApiResponse<GetRevForeignDataResult>> {
     const response = await fetch(`https://finance.pae.baidu.com/api/getrevforeigndata?query=${to}${from}&finClientType=pc`)
     return await response.json()
   }
 }
 
-export interface FinanceResult<T> {
-  /**
-   * 0代表正常
-   */
-  ResultCode: string
-  Result: T
-}
 export interface GetRevForeignDataResult {
   revCode: ForexRate[]
   corrCode: any
+}
+
+export interface BannerResult {
+  list: BannerList[]
+  tabs: []
+}
+
+export interface BannerList {
+  p: string
+  /**
+   * 3168.52
+   */
+  lastPrice: string
+  status: 'down' | 'up'
+  /**
+   * @example -1.33%
+   */
+  ratio: string
+  /**
+   * @example 000001
+   */
+  code: string
+  /**
+   * @example 上证指数
+   */
+  name: string
+  market: string
 }
 
 export interface ForexRate {
