@@ -5,7 +5,7 @@ const ForexWidget = new Widget({
   title: { 'zh-CN': '汇率换算', 'en-US': 'Forex' },
   description: { 'zh-CN': '每分钟刷新一次', 'en-US': 'Refresh every minute' },
   keywords: [WidgetKeyword.RECOMMEND],
-  categories: ['utilities'],
+  categories: ['utilities', 'finance'],
   lang: 'zh-CN',
   width: 3,
   height: 3,
