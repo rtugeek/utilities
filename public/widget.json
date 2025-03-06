@@ -141,7 +141,8 @@
       "backgroundThrottling": true,
       "previewImage": "/images/preview_forex.png",
       "categories": [
-        "utilities"
+        "utilities",
+        "finance"
       ],
       "supportDeployMode": 17,
       "routes": [],

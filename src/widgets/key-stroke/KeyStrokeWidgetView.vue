@@ -1,15 +1,15 @@
 <script lang="ts" setup>
-import type { MotionVariants } from '@vueuse/motion'
-import { useMotion } from '@vueuse/motion'
+import type {MotionVariants} from '@vueuse/motion'
+import {useMotion} from '@vueuse/motion'
 import {
   nextTick,
   onMounted,
   reactive,
   ref,
 } from 'vue'
-import { useKeyboardEventHook } from '@widget-js/vue3'
-import type { NativeKeyboardEvent } from '@widget-js/core'
-import { BrowserWindowApi } from '@widget-js/core'
+import {useKeyboardEventHook} from '@widget-js/vue3'
+import {DeviceApi, type NativeKeyboardEvent} from '@widget-js/core'
+import {BrowserWindowApi} from '@widget-js/core'
 import delay from 'lodash-es/delay'
 
 const keyboard = ref<HTMLElement>()
@@ -43,14 +43,16 @@ const variants = ref<MotionVariants<'hide' | 'show'>>({
   },
 })
 
-const normalKeyContent = ref<HTMLElement>()
 const modifierKeys = reactive<NativeKeyboardEvent[]>([])
 const normalKey = ref<NativeKeyboardEvent | null>(null)
-const { apply } = useMotion(keyboard, variants)
+const capsLock = ref<NativeKeyboardEvent | null>(null)
+const isCapsLockOn = ref(false)
+const {apply} = useMotion(keyboard, variants)
 
 function clearAllKeys() {
   modifierKeys.splice(0, modifierKeys.length)
   normalKey.value = null
+  capsLock.value = null
 }
 
 const hideTimeoutId = 0
@@ -69,6 +71,10 @@ const shiftKey = {
 const altKey = {
   name: 'Alt',
   keyCode: 164,
+}
+const capsLockKey = {
+  name: 'CapsLock',
+  keyCode: 20,
 }
 const hideTimeout = 4000
 const keyNameMap = [
@@ -126,9 +132,9 @@ const keyNameMap = [
   },
 ]
 
-function isModifierKey(keycode:number) {
+function isModifierKey(keycode: number) {
   return (
-    keycode == ctlKey.keyCode || keycode == shiftKey.keyCode || keycode == altKey.keyCode || keycode == winKey.keyCode
+      keycode == ctlKey.keyCode || keycode == shiftKey.keyCode || keycode == altKey.keyCode || keycode == winKey.keyCode
   )
 }
 
@@ -176,8 +182,17 @@ function startHideTimer() {
   }, hideTimeout) as unknown as number
 }
 
+function updateCapsLock(){
+  try {
+    DeviceApi.isCapsLockOn().then((res)=>{
+      isCapsLockOn.value = res
+    })
+  }catch (e) {
+
+  }
+}
+
 useKeyboardEventHook((event: NativeKeyboardEvent) => {
-  console.log(event)
   if (event.isKeyUp) {
     if (isModifierKey(event.keyCode)) {
       const modifierKey = modifierKeys.find(it => it.keyCode == event.keyCode)
@@ -186,14 +201,16 @@ useKeyboardEventHook((event: NativeKeyboardEvent) => {
       }
 
       startHideTimer()
-    }
-    else {
+    } else {
       if (normalKey.value) {
         normalKey.value.isKeyUp = true
+      } else if (capsLock.value) {
+        capsLock.value.isKeyUp = true
+        updateCapsLock()
+        startHideTimer()
       }
     }
-  }
-  else {
+  } else {
     if (isModifierKey(event.keyCode)) {
       if (isModifierKeysReleased()) {
         clearAllKeys()
@@ -202,21 +219,24 @@ useKeyboardEventHook((event: NativeKeyboardEvent) => {
       const modifierKey = modifierKeys.find(it => it.keyCode == event.keyCode)
       if (modifierKey) {
         modifierKey.isKeyUp = false
-      }
-      else {
+      } else {
         if (event.keyCode == ctlKey.keyCode) {
           event.name = ctlKey.name
           event.isKeyUp = false
-        }
-        else if (event.keyCode == winKey.keyCode) {
+        } else if (event.keyCode == winKey.keyCode) {
           event.name = winKey.name
           event.isKeyUp = false
         }
         modifierKeys.push(event)
         show()
       }
-    }
-    else {
+    } else if (event.keyCode == capsLockKey.keyCode) {
+      clearAllKeys()
+      capsLock.value = event
+      show()
+      updateCapsLock()
+      clearTimeout(hideTimeoutId)
+    } else {
       if (!isModifierKeysReleased()) {
         const find = keyNameMap.find(it => it.keyCode == event.keyCode)
         if (find) {
@@ -240,7 +260,7 @@ onMounted(async () => {
       scanCode: 17,
       isKeyUp: true,
     }
-    await BrowserWindowApi.setBounds({ width:400, height: 240 })
+    await BrowserWindowApi.setBounds({width: 450, height: 240})
     await BrowserWindowApi.alignToScreen('bottom-center')
     await BrowserWindowApi.setIgnoreMouseEvent(true)
     show()
@@ -252,10 +272,10 @@ onMounted(async () => {
 <template>
   <div class="container">
     <div
-      ref="keyboard"
-      class="keyboard"
-      @mouseenter="BrowserWindowApi.setIgnoreMouseEvent(false)"
-      @mouseleave="BrowserWindowApi.setIgnoreMouseEvent(true)"
+        ref="keyboard"
+        class="keyboard"
+        @mouseenter="BrowserWindowApi.setIgnoreMouseEvent(false)"
+        @mouseleave="BrowserWindowApi.setIgnoreMouseEvent(true)"
     >
       <div class="keyboard-inner">
         <template v-for="modifierKey in modifierKeys" :key="modifierKey.keyCode">
@@ -267,8 +287,13 @@ onMounted(async () => {
         </template>
 
         <div v-if="normalKey" class="key">
-          <div ref="normalKeyContent" class="key-content" :class="{ active: !normalKey.isKeyUp }">
+          <div class="key-content" :class="{ active: !normalKey.isKeyUp }">
             {{ normalKey?.name }}
+          </div>
+        </div>
+        <div v-if="capsLock" class="key">
+          <div class="key-content caps-lock" :class="{ active: !capsLock.isKeyUp, on: isCapsLockOn }">
+            Caps
           </div>
         </div>
       </div>
@@ -279,12 +304,12 @@ onMounted(async () => {
 <style scoped lang="scss">
 .container {
   display: flex;
-  align-items: center;
+  align-items: start;
   justify-content: center;
   font-family: system-ui;
-  width: 100%;
+  width: 100vw;
+  height: 100vh;
   padding: 6px;
-  overflow: hidden;
 }
 
 $radius: 20px;
@@ -375,6 +400,25 @@ $key-height: 60px;
         font-size: 1.1rem;
         top: -0.1rem;
 
+        &.caps-lock {
+          &::before {
+            width: 6px;
+            height: 6px;
+            top: 6px;
+            position: absolute;
+            content: '';
+            right: 6px;
+            border-radius: 50%;
+            background-color: #a2a2a2;
+            box-shadow: 0 0 2px 2px rgba(235, 235, 235, 0.46);
+          }
+          &.on{
+            &::before {
+              background-color: #85f120;
+              box-shadow: 0 0 2px 2px rgba(133, 241, 32, 0.48);
+            }
+          }
+        }
         display: flex;
         align-items: center;
         justify-content: center;
