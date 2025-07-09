@@ -67,6 +67,49 @@
       ]
     },
     {
+      "name": "widgetjs.cn.utilities.forex",
+      "title": {
+        "zh-CN": "汇率换算",
+        "en-US": "Forex"
+      },
+      "description": {
+        "zh-CN": "每分钟刷新一次",
+        "en-US": "Refresh every minute"
+      },
+      "keywords": [
+        "recommend"
+      ],
+      "security": false,
+      "permissions": [],
+      "lang": "zh-CN",
+      "width": 3,
+      "height": 3,
+      "maxWidth": 3,
+      "webviewTag": false,
+      "maxHeight": 3,
+      "minWidth": 3,
+      "minHeight": 3,
+      "movable": true,
+      "singleton": false,
+      "resizable": true,
+      "path": "/widget/forex",
+      "meta": {},
+      "backgroundThrottling": true,
+      "previewImage": "/images/preview_forex.png",
+      "categories": [
+        "utilities",
+        "finance"
+      ],
+      "supportDeployMode": 17,
+      "routes": [],
+      "socialLinks": [
+        {
+          "name": "github",
+          "link": "https://github.com/rtugeek/utilities"
+        }
+      ]
+    },
+    {
       "name": "widgetjs.cn.utilities.key_stroke",
       "title": {
         "zh-CN": "键盘演示",
@@ -102,49 +145,6 @@
         "utilities"
       ],
       "supportDeployMode": 65536,
-      "routes": [],
-      "socialLinks": [
-        {
-          "name": "github",
-          "link": "https://github.com/rtugeek/utilities"
-        }
-      ]
-    },
-    {
-      "name": "widgetjs.cn.utilities.forex",
-      "title": {
-        "zh-CN": "汇率换算",
-        "en-US": "Forex"
-      },
-      "description": {
-        "zh-CN": "每分钟刷新一次",
-        "en-US": "Refresh every minute"
-      },
-      "keywords": [
-        "recommend"
-      ],
-      "security": false,
-      "permissions": [],
-      "lang": "zh-CN",
-      "width": 3,
-      "height": 3,
-      "maxWidth": 3,
-      "webviewTag": false,
-      "maxHeight": 3,
-      "minWidth": 3,
-      "minHeight": 3,
-      "movable": true,
-      "singleton": false,
-      "resizable": true,
-      "path": "/widget/forex",
-      "meta": {},
-      "backgroundThrottling": true,
-      "previewImage": "/images/preview_forex.png",
-      "categories": [
-        "utilities",
-        "finance"
-      ],
-      "supportDeployMode": 17,
       "routes": [],
       "socialLinks": [
         {

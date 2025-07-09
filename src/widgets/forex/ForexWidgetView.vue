@@ -1,10 +1,4 @@
 <script lang="ts" setup>
-import {nextTick, onMounted, ref} from 'vue'
-import {useMenuListener, useWidget} from '@widget-js/vue3'
-import {MenuApi, type WidgetMenuItem} from '@widget-js/core'
-import {useDebounceFn, useIntervalFn, useStorage} from '@vueuse/core'
-import {Refresh} from '@icon-park/vue-next'
-import consola from 'consola'
 import {
   CNY,
   type CurrencyInfo,
@@ -12,11 +6,17 @@ import {
   FinanceApi,
   PopularCurrencyMapping,
   SoutheastAsiaCurrencyMapping,
-  USD
+  USD,
 } from '@/api/FinanceApi'
 import CurrencyBlock from '@/widgets/forex/CurrencyBlock.vue'
+import { Refresh } from '@icon-park/vue-next'
+import { useDebounceFn, useIntervalFn, useStorage } from '@vueuse/core'
+import { MenuApi, type WidgetMenuItem } from '@widget-js/core'
+import { useMenuListener, useWidget } from '@widget-js/vue3'
+import consola from 'consola'
+import { nextTick, onMounted, ref } from 'vue'
 
-const {widgetParams} = useWidget()
+const { widgetParams } = useWidget()
 const loading = ref(false)
 const value1 = ref(1)
 const value2 = ref(1)
@@ -52,8 +52,8 @@ function selectCurrency(index: number) {
       {
         id: 'southeast_asia',
         label: '东南亚',
-        submenu: southEastAsiaMenus
-      }
+        submenu: southEastAsiaMenus,
+      },
     ],
   })
 }
@@ -64,7 +64,8 @@ useMenuListener((type, menu) => {
     if (currentIndex.value == 0) {
       currency1.value = currencyFind
       refresh()
-    } else {
+    }
+    else {
       currency2.value = currencyFind
       refresh()
     }
@@ -94,7 +95,8 @@ onMounted(async () => {
 const onChanged = useDebounceFn((currency: CurrencyInfo, value: number) => {
   if (currency.code == currency1.value.code) {
     value2.value = value * price.value
-  } else {
+  }
+  else {
     value1.value = Math.round(value / price.value * 10000) / 10000
   }
 }, 500)
@@ -107,20 +109,27 @@ useIntervalFn(refresh, 1000 * 60)
     <div class="root flex flex-col gap-2 p-4">
       <div class="font-bold flex">
         {{ currency1.sortName ?? currency1.name }}兑{{ currency2.sortName ?? currency2.name }}
-        <Refresh class="ml-auto cursor-pointer" :class="{ rotating: loading }" @click="refresh"/>
+        <Refresh class="ml-auto cursor-pointer" :class="{ rotating: loading }" @click="refresh" />
       </div>
       <div class="flex text-xs gap-2">
-        <div v-for="item in upDown" class="flex diff"
-             :class="{ up: item.value.includes('+'), down: item.value.includes('-') }">
+        <div
+          v-for="item in upDown" :key="item.value"
+          class="flex diff"
+          :class="{ up: item.value.includes('+'), down: item.value.includes('-') }"
+        >
           <div class="value">
             {{ item.value }}
           </div>
         </div>
       </div>
-      <CurrencyBlock v-model:value="value1" v-model="currency1" class="flex-1"
-                     @value-change="onChanged(currency1, value1)" @title-click="selectCurrency(0)"/>
-      <CurrencyBlock v-model:value="value2" v-model="currency2" class="flex-1"
-                     @value-change="onChanged(currency2, value2)" @title-click="selectCurrency(1)"/>
+      <CurrencyBlock
+        v-model:value="value1" v-model="currency1" class="flex-1"
+        @value-change="onChanged(currency1, value1)" @title-click="selectCurrency(0)"
+      />
+      <CurrencyBlock
+        v-model:value="value2" v-model="currency2" class="flex-1"
+        @value-change="onChanged(currency2, value2)" @title-click="selectCurrency(1)"
+      />
     </div>
   </widget-wrapper>
 </template>
