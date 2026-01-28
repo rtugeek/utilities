@@ -1,14 +1,16 @@
 {
   "name": "@widget-js/utilities",
   "type": "module",
-  "version": "1.2.0",
+  "version": "1.3.0",
   "private": true,
   "scripts": {
     "dev": "vite",
     "build": "vite build",
+    "build:offline": "vite build --mode offline",
     "preview": "vite preview",
     "update:widgetjs": "widget dependencies -t remote",
     "release": "widget release -t ftp",
+    "release:offline": "widget release -t ftp -f release-offline.json",
     "type-check": "vue-tsc --build --f orce",
     "lint": "eslint .",
     "lint:fix": "eslint . --fix",

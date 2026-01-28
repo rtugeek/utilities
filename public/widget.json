@@ -1,6 +1,6 @@
 {
   "name": "widgetjs.cn.utilities",
-  "version": "1.2.0",
+  "version": "1.3.0",
   "author": "Neo Fu",
   "homepage": "",
   "title": {
@@ -20,6 +20,7 @@
     "base": "/utilities",
     "hostname": "widgetjs.cn"
   },
+  "zipUrl": "https://widgetjs.cn/utilities/widget.zip",
   "hash": true,
   "url": "",
   "widgets": [
@@ -100,7 +101,13 @@
         "utilities"
       ],
       "supportDeployMode": 17,
-      "routes": []
+      "routes": [],
+      "socialLinks": [
+        {
+          "name": "github",
+          "link": "https://github.com/rtugeek/stocks-desktop"
+        }
+      ]
     },
     {
       "name": "widgetjs.cn.utilities.key_stroke",

@@ -13,6 +13,9 @@ const NoteWidget = new Widget({
   maxWidth: 4,
   minHeight: 4,
   maxHeight: 6,
+  socialLinks: [
+    { name: 'github', link: 'https://github.com/rtugeek/stocks-desktop' },
+  ],
   previewImage: '/images/preview_note.png',
   path: '/widget/note',
 })

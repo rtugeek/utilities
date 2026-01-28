@@ -22,6 +22,7 @@ export default new WidgetPackage({
     base: '/utilities',
     hostname: 'widgetjs.cn',
   },
+  zipUrl: 'https://widgetjs.cn/utilities/widget.zip',
   remoteEntry: 'https://widgetjs.cn/utilities',
   remotePackage: 'https://widgetjs.cn/utilities/widget.json',
 })
