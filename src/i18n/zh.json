@@ -1,0 +1,21 @@
+{
+  "note": {
+    "instructions": "便签使用说明：\n\n1. 使用 Ctrl + 鼠标滚轮 调整字体大小。\n\n2. 内容会自动保存，下次打开时依然存在。\n\n3. 适合快速记录临时信息。"
+  },
+  "waterReminder": {
+    "title": "喝水提醒",
+    "notification": {
+      "title": "喝水提醒",
+      "message": "起来喝杯水吧！",
+      "cancel": "关闭",
+      "confirm": "喝一杯"
+    },
+    "config": {
+      "enableReminder": "定时提醒",
+      "intervalLabel": "提醒间隔",
+      "intervalTooltip": "单位为分钟",
+      "targetCup": "目标杯数"
+    },
+    "daily": "每天{count}杯水"
+  }
+}

@@ -1,0 +1,21 @@
+{
+  "note": {
+    "instructions": "Note usage:\n\n1. Use Ctrl + mouse wheel to change font size.\n\n2. Content is saved automatically and will be present when reopened.\n\n3. Good for quickly jotting temporary information."
+  },
+  "waterReminder": {
+    "title": "Water Reminder",
+    "notification": {
+      "title": "Drink Water",
+      "message": "Time to grab a cup of water!",
+      "cancel": "Close",
+      "confirm": "Drink"
+    },
+    "config": {
+      "enableReminder": "Enable reminder",
+      "intervalLabel": "Reminder interval",
+      "intervalTooltip": "Unit: minutes",
+      "targetCup": "Target cups per day"
+    },
+    "daily": "{count} cups/day"
+  }
+}

@@ -1,15 +1,18 @@
 <script lang="ts" setup>
+import { useStorage } from '@vueuse/core'
+import { WidgetTheme } from '@widget-js/core'
 import {
+  useWidget,
   WidgetConfigOption,
   WidgetEditDialog,
-  useWidget,
 } from '@widget-js/vue3'
-import { WidgetTheme } from '@widget-js/core'
-import { useStorage } from '@vueuse/core'
+import { useI18n } from 'vue-i18n'
 import {
   DEFAULT_WATER_REMINDER_CONFIG,
   type IWaterReminderConfig,
 } from '@/widgets/water-reminder/model/WaterReminderConfig'
+
+const { t } = useI18n()
 
 const configData = useStorage<IWaterReminderConfig>('water-reminder-config', DEFAULT_WATER_REMINDER_CONFIG)
 const defaultTheme = new WidgetTheme({
@@ -46,21 +49,21 @@ const widgetConfigOption = new WidgetConfigOption({
   >
     <template #custom>
       <el-form>
-        <el-form-item label="定时提醒">
+        <el-form-item :label="t('waterReminder.config.enableReminder')">
           <el-checkbox v-model="configData.enableReminder" />
         </el-form-item>
         <el-tooltip
           v-if="configData.enableReminder"
           class="box-item"
           effect="dark"
-          content="单位为分钟"
+          :content="t('waterReminder.config.intervalTooltip')"
           placement="top-start"
         >
-          <el-form-item label="提醒间隔">
+          <el-form-item :label="t('waterReminder.config.intervalLabel')">
             <el-input-number v-model="configData.interval" :min="5" :max="100" />
           </el-form-item>
         </el-tooltip>
-        <el-form-item label="目标杯数">
+        <el-form-item :label="t('waterReminder.config.targetCup')">
           <el-input-number v-model="configData.targetCup" :min="1" :max="20" />
         </el-form-item>
       </el-form>

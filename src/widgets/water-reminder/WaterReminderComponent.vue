@@ -1,21 +1,22 @@
 <script lang="ts" setup>
-import '@icon-park/vue-next/styles/index.css'
 import {
-  computed,
-  ref,
-  watch,
-} from 'vue'
+  Plus,
+  Refresh,
+} from '@icon-park/vue-next'
 import {
   TransitionPresets,
   useElementSize,
   useTransition,
 } from '@vueuse/core'
-import {
-  Plus,
-  Refresh,
-} from '@icon-park/vue-next'
 import Color from 'color'
+import {
+  computed,
+  ref,
+  watch,
+} from 'vue'
+import { useI18n } from 'vue-i18n'
 import { WaveBall } from '@/widgets/water-reminder/model/WaveBall'
+import '@icon-park/vue-next/styles/index.css'
 
 const props = defineProps({
   primaryColor: {
@@ -35,7 +36,11 @@ const props = defineProps({
     default: 8,
   },
 })
+
 const emits = defineEmits(['update:cup'])
+
+const { t } = useI18n()
+
 const cupModel = computed({
   get: () => {
     return props.cup
@@ -113,7 +118,7 @@ function reset() {
 
 const circleBorderColor = computed(() => {
   const color = new Color(props.primaryColor)
-  return color.mix(new Color("#fff")).alpha(0.8).toString()
+  return color.mix(new Color('#fff')).alpha(0.8).toString()
 })
 </script>
 
@@ -124,7 +129,7 @@ const circleBorderColor = computed(() => {
       <span class="text">{{ cupModel }}/{{ targetCup }}</span>
       <div class="border" />
     </div>
-    <span class="title">每天{{ targetCup }}杯水</span>
+    <span class="title">{{ t('waterReminder.daily', { count: targetCup }) }}</span>
     <div v-show="showControl" class="btn reset" @click="reset">
       <Refresh theme="outline" :fill="primaryColor" />
     </div>

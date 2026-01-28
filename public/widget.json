@@ -1,6 +1,6 @@
 {
   "name": "widgetjs.cn.utilities",
-  "version": "1.1.0",
+  "version": "1.2.0",
   "author": "Neo Fu",
   "homepage": "",
   "title": {
@@ -67,14 +67,14 @@
       ]
     },
     {
-      "name": "widgetjs.cn.utilities.forex",
+      "name": "cn.widgetjs.widgets.note",
       "title": {
-        "zh-CN": "汇率换算",
-        "en-US": "Forex"
+        "zh-CN": "快速便签",
+        "en-US": "Quick Note"
       },
       "description": {
-        "zh-CN": "每分钟刷新一次",
-        "en-US": "Refresh every minute"
+        "zh-CN": "便捷的桌面便签，随时记录提醒。",
+        "en-US": "Quick desktop notes and reminders at a glance."
       },
       "keywords": [
         "recommend"
@@ -82,32 +82,25 @@
       "security": false,
       "permissions": [],
       "lang": "zh-CN",
-      "width": 3,
-      "height": 3,
-      "maxWidth": 3,
+      "width": 4,
+      "height": 4,
+      "maxWidth": 4,
       "webviewTag": false,
-      "maxHeight": 3,
-      "minWidth": 3,
-      "minHeight": 3,
+      "maxHeight": 6,
+      "minWidth": 4,
+      "minHeight": 4,
       "movable": true,
       "singleton": false,
       "resizable": true,
-      "path": "/widget/forex",
+      "path": "/widget/note",
       "meta": {},
       "backgroundThrottling": true,
-      "previewImage": "/images/preview_forex.png",
+      "previewImage": "/images/preview_note.png",
       "categories": [
-        "utilities",
-        "finance"
+        "utilities"
       ],
       "supportDeployMode": 17,
-      "routes": [],
-      "socialLinks": [
-        {
-          "name": "github",
-          "link": "https://github.com/rtugeek/utilities"
-        }
-      ]
+      "routes": []
     },
     {
       "name": "widgetjs.cn.utilities.key_stroke",
@@ -145,6 +138,49 @@
         "utilities"
       ],
       "supportDeployMode": 65536,
+      "routes": [],
+      "socialLinks": [
+        {
+          "name": "github",
+          "link": "https://github.com/rtugeek/utilities"
+        }
+      ]
+    },
+    {
+      "name": "widgetjs.cn.utilities.forex",
+      "title": {
+        "zh-CN": "汇率换算",
+        "en-US": "Forex"
+      },
+      "description": {
+        "zh-CN": "每分钟刷新一次",
+        "en-US": "Refresh every minute"
+      },
+      "keywords": [
+        "recommend"
+      ],
+      "security": false,
+      "permissions": [],
+      "lang": "zh-CN",
+      "width": 3,
+      "height": 3,
+      "maxWidth": 3,
+      "webviewTag": false,
+      "maxHeight": 3,
+      "minWidth": 3,
+      "minHeight": 3,
+      "movable": true,
+      "singleton": false,
+      "resizable": true,
+      "path": "/widget/forex",
+      "meta": {},
+      "backgroundThrottling": true,
+      "previewImage": "/images/preview_forex.png",
+      "categories": [
+        "utilities",
+        "finance"
+      ],
+      "supportDeployMode": 17,
       "routes": [],
       "socialLinks": [
         {

@@ -1,10 +1,23 @@
 <script lang="ts" setup>
+import { useIntervalFn, useStorage } from '@vueuse/core'
 import {
-  WidgetWrapper,
+  type BroadcastEvent,
+  type ReminderNotificationOption,
+  SystemApiEvent,
+  WidgetTheme,
+} from '@widget-js/core'
+import {
+  LogApi,
+  NotificationApi,
+} from '@widget-js/core'
+import {
   useAppBroadcast,
   useWidget,
   useWidgetSize,
+  WidgetWrapper,
 } from '@widget-js/vue3'
+import consola from 'consola'
+import dayjs from 'dayjs'
 import {
   computed,
   nextTick,
@@ -12,27 +25,16 @@ import {
   ref,
   watch,
 } from 'vue'
-import {
-  AppApiEvent,
-  type BroadcastEvent,
-  type ReminderNotificationOption,
-  SystemApi, SystemApiEvent,
-  WidgetTheme
-} from '@widget-js/core'
-import {
-  LogApi,
-  NotificationApi,
-} from '@widget-js/core'
-import dayjs from 'dayjs'
-import { useIntervalFn, useStorage } from '@vueuse/core'
-import consola from 'consola'
-import WaterReminderComponent from './WaterReminderComponent.vue'
+import { useI18n } from 'vue-i18n'
 import {
   DEFAULT_WATER_REMINDER_CONFIG,
   type IWaterReminderConfig,
 } from '@/widgets/water-reminder/model/WaterReminderConfig'
-import WaterReminderWidget from '@/widgets/water-reminder/WaterReminder.widget'
 import { WaterReminderHistory } from '@/widgets/water-reminder/model/WaterReminderHistory'
+import WaterReminderWidget from '@/widgets/water-reminder/WaterReminder.widget'
+import WaterReminderComponent from './WaterReminderComponent.vue'
+
+const { t } = useI18n()
 
 const cup = ref(0)
 const configData = useStorage<IWaterReminderConfig>('water-reminder-config', DEFAULT_WATER_REMINDER_CONFIG)
@@ -71,11 +73,11 @@ useIntervalFn(() => {
     consola.info('send reminder')
     lastReminderAt.value = dayjs()
     const options: ReminderNotificationOption = {
-      title: '喝水提醒',
-      message: '起来喝杯水吧！',
+      title: t('waterReminder.notification.title'),
+      message: t('waterReminder.notification.message'),
       icon: 'tea-drink',
-      cancelButtonText: '关闭',
-      confirmButtonText: '喝一杯',
+      cancelButtonText: t('waterReminder.notification.cancel'),
+      confirmButtonText: t('waterReminder.notification.confirm'),
       cancelBroadcast,
       confirmBroadcast: okBroadcast,
       duration: 5000,
@@ -84,10 +86,11 @@ useIntervalFn(() => {
   }
 }, 10000)
 
-useAppBroadcast([cancelBroadcast, okBroadcast,SystemApiEvent.DATE_CHANGED], async (broadcastEvent: BroadcastEvent) => {
+useAppBroadcast([cancelBroadcast, okBroadcast, SystemApiEvent.DATE_CHANGED], async (broadcastEvent: BroadcastEvent) => {
   if (broadcastEvent.event == okBroadcast) {
     cup.value++
-  }else if(broadcastEvent.event == SystemApiEvent.DATE_CHANGED){
+  }
+  else if (broadcastEvent.event == SystemApiEvent.DATE_CHANGED) {
     cup.value = await WaterReminderHistory.getTodayCount()
   }
 })
