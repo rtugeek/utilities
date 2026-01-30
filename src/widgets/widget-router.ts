@@ -3,6 +3,7 @@ import KeyStrokeWidgetRoutes from '@/widgets/key-stroke/KeyStrokeWidgetRoutes'
 import NoteWidgetRoutes from '@/widgets/note/NoteWidgetRoutes'
 
 import WaterReminderWidgetRoutes from '@/widgets/water-reminder/WaterReminderWidgetRoutes'
+import ConvertWidgetRoutes from './convert/ConvertWidgetRoutes'
 import ForexWidgetRoutes from './forex/ForexWidgetRoutes'
 // FBI WANING! IMPORT PLACE, DONT DELETE THIS LINE
 const WidgetRouter: RouteRecordRaw[] = [
@@ -10,6 +11,7 @@ const WidgetRouter: RouteRecordRaw[] = [
   ...WaterReminderWidgetRoutes,
   ...ForexWidgetRoutes,
   ...NoteWidgetRoutes,
+  ...ConvertWidgetRoutes,
   // FBI WANING! ROUTE PLACE, DONT DELETE THIS LINE
 ]
 export default WidgetRouter

@@ -17,5 +17,31 @@
       "targetCup": "Target cups per day"
     },
     "daily": "{count} cups/day"
+  },
+  "imageConverter": {
+    "title": "Image Converter",
+    "dropText": "Drop files here or <em>click to upload</em>",
+    "targetFormat": "Target Format",
+    "selectFormat": "Select format",
+    "width": "Width",
+    "height": "Height",
+    "original": "Original",
+    "keepAspectRatio": "Keep Aspect Ratio",
+    "convertAndDownload": "Convert & Download",
+    "clear": "Clear",
+    "name": "Name",
+    "size": "Size",
+    "status": "Status",
+    "action": "Action",
+    "remove": "Remove",
+    "convertedSingle": "Converted 1 file.",
+    "convertedMultiple": "Converted {count} files.",
+    "noConverted": "No files converted successfully.",
+    "statusTypes": {
+      "pending": "Pending",
+      "converting": "Converting",
+      "success": "Success",
+      "error": "Error"
+    }
   }
 }

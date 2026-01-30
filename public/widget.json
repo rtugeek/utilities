@@ -1,6 +1,6 @@
 {
   "name": "widgetjs.cn.utilities",
-  "version": "1.3.0",
+  "version": "1.4.0",
   "author": "Neo Fu",
   "homepage": "",
   "title": {
@@ -68,48 +68,6 @@
       ]
     },
     {
-      "name": "cn.widgetjs.widgets.note",
-      "title": {
-        "zh-CN": "快速便签",
-        "en-US": "Quick Note"
-      },
-      "description": {
-        "zh-CN": "便捷的桌面便签，随时记录提醒。",
-        "en-US": "Quick desktop notes and reminders at a glance."
-      },
-      "keywords": [
-        "recommend"
-      ],
-      "security": false,
-      "permissions": [],
-      "lang": "zh-CN",
-      "width": 4,
-      "height": 4,
-      "maxWidth": 4,
-      "webviewTag": false,
-      "maxHeight": 6,
-      "minWidth": 4,
-      "minHeight": 4,
-      "movable": true,
-      "singleton": false,
-      "resizable": true,
-      "path": "/widget/note",
-      "meta": {},
-      "backgroundThrottling": true,
-      "previewImage": "/images/preview_note.png",
-      "categories": [
-        "utilities"
-      ],
-      "supportDeployMode": 17,
-      "routes": [],
-      "socialLinks": [
-        {
-          "name": "github",
-          "link": "https://github.com/rtugeek/stocks-desktop"
-        }
-      ]
-    },
-    {
       "name": "widgetjs.cn.utilities.key_stroke",
       "title": {
         "zh-CN": "键盘演示",
@@ -150,6 +108,48 @@
         {
           "name": "github",
           "link": "https://github.com/rtugeek/utilities"
+        }
+      ]
+    },
+    {
+      "name": "cn.widgetjs.widgets.note",
+      "title": {
+        "zh-CN": "快速便签",
+        "en-US": "Quick Note"
+      },
+      "description": {
+        "zh-CN": "便捷的桌面便签，随时记录提醒。",
+        "en-US": "Quick desktop notes and reminders at a glance."
+      },
+      "keywords": [
+        "recommend"
+      ],
+      "security": false,
+      "permissions": [],
+      "lang": "zh-CN",
+      "width": 4,
+      "height": 4,
+      "maxWidth": 4,
+      "webviewTag": false,
+      "maxHeight": 6,
+      "minWidth": 4,
+      "minHeight": 4,
+      "movable": true,
+      "singleton": false,
+      "resizable": true,
+      "path": "/widget/note",
+      "meta": {},
+      "backgroundThrottling": true,
+      "previewImage": "/images/preview_note.png",
+      "categories": [
+        "utilities"
+      ],
+      "supportDeployMode": 17,
+      "routes": [],
+      "socialLinks": [
+        {
+          "name": "github",
+          "link": "https://github.com/rtugeek/stocks-desktop"
         }
       ]
     },
@@ -195,6 +195,57 @@
           "link": "https://github.com/rtugeek/utilities"
         }
       ]
+    },
+    {
+      "name": "widgetjs.cn.utilities.convert",
+      "title": {
+        "zh-CN": "图片格式转换",
+        "en-US": "Image Converter"
+      },
+      "description": {
+        "zh-CN": "支持 HEIC, JPG, PNG, WEBP, BMP, ICO 格式转换",
+        "en-US": "Convert HEIC/Images to JPG, PNG, WEBP, BMP, ICO."
+      },
+      "keywords": [
+        "recommend"
+      ],
+      "security": false,
+      "permissions": [],
+      "lang": "zh-CN",
+      "width": 1,
+      "height": 1,
+      "maxWidth": 6,
+      "webviewTag": false,
+      "maxHeight": 6,
+      "minWidth": 3,
+      "minHeight": 4,
+      "movable": true,
+      "singleton": false,
+      "resizable": true,
+      "path": "/widget/convert",
+      "meta": {},
+      "backgroundThrottling": false,
+      "previewImage": "/images/preview_convert.png",
+      "categories": [
+        "utilities"
+      ],
+      "supportDeployMode": 65536,
+      "routes": [],
+      "browserWindowOptions": {
+        "backgroundThrottling": false,
+        "skipTaskbar": false,
+        "titleBarStyle": "default",
+        "transparent": false,
+        "resizable": true,
+        "frame": true,
+        "minimizable": true,
+        "maximizable": true,
+        "width": 800,
+        "center": true,
+        "height": 600,
+        "movable": true,
+        "preventDefaultClose": false
+      }
     }
   ],
   "pages": []

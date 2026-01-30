@@ -17,5 +17,31 @@
       "targetCup": "目标杯数"
     },
     "daily": "每天{count}杯水"
+  },
+  "imageConverter": {
+    "title": "图片格式转换",
+    "dropText": "拖拽文件到此处或<em>点击上传</em>",
+    "targetFormat": "目标格式",
+    "selectFormat": "选择格式",
+    "width": "宽度",
+    "height": "高度",
+    "original": "原始大小",
+    "keepAspectRatio": "保持宽高比",
+    "convertAndDownload": "转换并下载",
+    "clear": "清空",
+    "name": "文件名",
+    "size": "大小",
+    "status": "状态",
+    "action": "操作",
+    "remove": "移除",
+    "convertedSingle": "成功转换 1 个文件。",
+    "convertedMultiple": "成功转换 {count} 个文件。",
+    "noConverted": "没有文件转换成功。",
+    "statusTypes": {
+      "pending": "等待中",
+      "converting": "转换中",
+      "success": "成功",
+      "error": "失败"
+    }
   }
 }
