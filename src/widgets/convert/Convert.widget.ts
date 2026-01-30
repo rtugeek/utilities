@@ -28,6 +28,9 @@ const ConvertWidget = new BackgroundWidget({
     movable: true,
     preventDefaultClose: false,
   },
+  socialLinks: [
+    { name: 'github', link: 'https://github.com/rtugeek/utilities' },
+  ],
   supportDeployMode: DeployMode.BACKGROUND,
   previewImage: '/images/preview_convert.png',
   path: '/widget/convert',

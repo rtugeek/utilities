@@ -68,6 +68,48 @@
       ]
     },
     {
+      "name": "cn.widgetjs.widgets.note",
+      "title": {
+        "zh-CN": "快速便签",
+        "en-US": "Quick Note"
+      },
+      "description": {
+        "zh-CN": "便捷的桌面便签，随时记录提醒。",
+        "en-US": "Quick desktop notes and reminders at a glance."
+      },
+      "keywords": [
+        "recommend"
+      ],
+      "security": false,
+      "permissions": [],
+      "lang": "zh-CN",
+      "width": 4,
+      "height": 4,
+      "maxWidth": 4,
+      "webviewTag": false,
+      "maxHeight": 6,
+      "minWidth": 4,
+      "minHeight": 4,
+      "movable": true,
+      "singleton": false,
+      "resizable": true,
+      "path": "/widget/note",
+      "meta": {},
+      "backgroundThrottling": true,
+      "previewImage": "/images/preview_note.png",
+      "categories": [
+        "utilities"
+      ],
+      "supportDeployMode": 17,
+      "routes": [],
+      "socialLinks": [
+        {
+          "name": "github",
+          "link": "https://github.com/rtugeek/stocks-desktop"
+        }
+      ]
+    },
+    {
       "name": "widgetjs.cn.utilities.key_stroke",
       "title": {
         "zh-CN": "键盘演示",
@@ -108,48 +150,6 @@
         {
           "name": "github",
           "link": "https://github.com/rtugeek/utilities"
-        }
-      ]
-    },
-    {
-      "name": "cn.widgetjs.widgets.note",
-      "title": {
-        "zh-CN": "快速便签",
-        "en-US": "Quick Note"
-      },
-      "description": {
-        "zh-CN": "便捷的桌面便签，随时记录提醒。",
-        "en-US": "Quick desktop notes and reminders at a glance."
-      },
-      "keywords": [
-        "recommend"
-      ],
-      "security": false,
-      "permissions": [],
-      "lang": "zh-CN",
-      "width": 4,
-      "height": 4,
-      "maxWidth": 4,
-      "webviewTag": false,
-      "maxHeight": 6,
-      "minWidth": 4,
-      "minHeight": 4,
-      "movable": true,
-      "singleton": false,
-      "resizable": true,
-      "path": "/widget/note",
-      "meta": {},
-      "backgroundThrottling": true,
-      "previewImage": "/images/preview_note.png",
-      "categories": [
-        "utilities"
-      ],
-      "supportDeployMode": 17,
-      "routes": [],
-      "socialLinks": [
-        {
-          "name": "github",
-          "link": "https://github.com/rtugeek/stocks-desktop"
         }
       ]
     },
@@ -245,7 +245,13 @@
         "height": 600,
         "movable": true,
         "preventDefaultClose": false
-      }
+      },
+      "socialLinks": [
+        {
+          "name": "github",
+          "link": "https://github.com/rtugeek/utilities"
+        }
+      ]
     }
   ],
   "pages": []
